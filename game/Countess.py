@@ -11,4 +11,5 @@ class Countess(Card):
     role = "Countess"
     value = 8
 
-    def perform(self, action, players, game, card_pile):
+    def perform(self, action, players, game, deck):
+        pass

@@ -5,7 +5,7 @@ Created on Jan 25, 2022
 """
 import random
 
-from .Spy import Spy
+# from .Spy import Spy
 from .Guard import Guard
 from .Priest import Priest
 from .Baron import Baron
@@ -18,11 +18,25 @@ from .Princess import Princess
 
 
 class Deck(object):
-    initial_deck = [Spy, Spy, Guard, Guard, Guard, Guard, Guard, Guard, Priest, Priest, Baron, Baron,
-                    Handmaid, Handmaid, Prince, Prince, Chancellor, Chancellor, King, Countess, Princess]
+    initial_deck = [
+        # Spy, Spy,
+        Guard, Guard, Guard, Guard, Guard, Guard,
+        Priest, Priest,
+        Baron, Baron,
+        Handmaid, Handmaid,
+        Prince, Prince,
+        Chancellor, Chancellor,
+        King,
+        Countess,
+        Princess]
 
     def __init__(self):
-        self.shuffled_deck = Deck.initial_deck
+        # self.shuffled_deck = Deck.initial_deck
+        # random.shuffle(self.shuffled_deck)
+        self.shuffled_deck = []
+        for clazz in Deck.initial_deck:
+            self.shuffled_deck.append(clazz())
+        # now shuffle
         random.shuffle(self.shuffled_deck)
 
     def size(self):
@@ -35,3 +49,6 @@ class Deck(object):
             top = self.shuffled_deck[0]
             self.shuffled_deck = self.shuffled_deck[1:]
             return top
+
+    def put_card(self, card):
+        self.shuffled_deck.append(card)

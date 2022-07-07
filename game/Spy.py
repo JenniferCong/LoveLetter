@@ -8,7 +8,8 @@ from .Card import Card
 
 
 class Spy(Card):
-    role = "Spy"
+    person = "Spy"
     value = 0
 
-    def perform(self, action, players, game, card_pile):
+    def perform(self, action, players, game, deck):
+        pass

@@ -1,16 +1,32 @@
-# This is a sample Python script.
+'''
+Created on Dec 17, 2016
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+@author: mjw
+'''
+from interface.Interface import Interface
+from game.GameEngine import GameEngine
+from player.AIRandom import AIRandom
+# from player.EasyAI import EasyAI
+# from player.HardAI import HardAI
 
+def main():
+    player = Interface().proxy
+    print("Number of RandomAI")
+    numRand = int(input("> "))
+    # print("Number of EasyAI")
+    # numEasy = int(input("> "))
+    # print("Number of HardAI")
+    # numHard = int(input("> "))
+    engine = GameEngine()
+    engine.addPlayer(player)
+    for i in range(numRand):
+        engine.addPlayer(AIRandom())
+    # for i in range(numEasy):
+    #     engine.addPlayer(EasyAI())
+    # for i in range(numHard):
+    #     engine.addPlayer(HardAI(True))
+    winner = engine.runGame()
+    print("The winner is "+str(winner))
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    main()

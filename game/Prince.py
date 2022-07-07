@@ -11,4 +11,5 @@ class Prince(Card):
     role = "Prince"
     value = 5
 
-    def perform(self, action, players, game, card_pile):
+    def perform(self, action, players, game, deck):
+        game.abnormalDiscard(action.target, action.target.hand)

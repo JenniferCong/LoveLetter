@@ -11,4 +11,7 @@ class Handmaid(Card):
     role = "Handmaid"
     value = 4
 
-    def perform(self, action, players, game, card_pile):
+    def perform(self, action, players, game, deck):
+        # TODO: refactor engine to work handmaid
+        # action.doer.handmaidenFlag = True
+        pass

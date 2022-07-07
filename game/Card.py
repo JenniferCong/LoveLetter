@@ -6,5 +6,5 @@ Created on Jan 24, 2022
 
 
 class Card(object):
-    def perform(self, action, players, game, card_pile):
+    def perform(self, action, players, game, deck):
         raise NotImplementedError

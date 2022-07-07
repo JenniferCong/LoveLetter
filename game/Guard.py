@@ -11,4 +11,6 @@ class Guard(Card):
     role = "Guard"
     value = 1
 
-    def perform(self, action, players, game, card_pile):
+    def perform(self, action, players, game, deck):
+        if action.guess == type(action.target.hand):
+            game.eliminate(action.target)

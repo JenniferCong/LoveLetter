@@ -11,4 +11,8 @@ class Baron(Card):
     role = "Baron"
     value = 3
 
-    def perform(self, action, players, game, card_pile):
+    def perform(self, action, players, game, deck):
+        if action.target.hand.value > action.doer.hand.value:
+            game.eliminate(action.doer)
+        elif action.target.hand.value < action.doer.hand.value:
+            game.eliminate(action.target)

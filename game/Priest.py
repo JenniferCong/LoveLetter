@@ -11,4 +11,5 @@ class Priest(Card):
     role = "Priest"
     value = 2
 
-    def perform(self, action, players, game, card_pile):
+    def perform(self, action, players, game, deck):
+        action.doer.priestKnowledge(action.target, action.target.hand)
