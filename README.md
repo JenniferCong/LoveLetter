@@ -1,4 +1,7 @@
 # LoveLetter
+Love Letter 2nd Edition is a deduction card game for 2 to 6 players. The goal of the game is to be the first player to reach the needed number of tokens to win. In this project, the game engine of Love Letter is built and two types of AI were implemented.
+
+# Statement
 I verify that I am the sole author of the programmes contained in this archive, except where explicitly stated to the contrary.  
 Xiangqi Chun  
 Aug. 8, 2022  
