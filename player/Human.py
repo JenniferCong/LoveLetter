@@ -1,24 +1,10 @@
-'''
-Created on Feb 20, 2022
-
-@author: Jennifer Chun
-'''
+# take https://github.com/matthewjwolff/LoveLetter as the reference
 from player.Player import Player
 
 
 class Human(Player):
-    '''
-    A class that acts on behalf of a human player. A class in the interface
-    folder should use an instance of this class to perform actions.
-
-    This class will register callbacks and execute those callbacks to the
-    interface.
-
-    Seems redundant? Sure. But I predict it will give more freedom to interface
-    developers, so that they don't have to design their interface around my API.
-    '''
-
-    def __init__(self, actionCallback, notifyCallback, priestCallback, kingCallback, eliminateCallback, assignHandCallback, name):
+    def __init__(self, actionCallback, notifyCallback, priestCallback, kingCallback, eliminateCallback,
+                 assignHandCallback, name):
         self.actionCallback = actionCallback
         self.notifyCallback = notifyCallback
         self.priestCallback = priestCallback
@@ -31,11 +17,11 @@ class Human(Player):
         Player.assignHand(self, card, players)
         self.assignHandCallback(card, players)
 
-    def getAction(self, dealtCard, deckSize, graveState, players, chancellorCards):
-        return self.actionCallback(dealtCard, deckSize, graveState, players, chancellorCards)
+    def getAction(self, dealtCard, deckSize, discardedState, players, chancellorCards):
+        return self.actionCallback(dealtCard, deckSize, discardedState, players, chancellorCards)
 
-    def notifyOfAction(self, action, graveState):
-        self.notifyCallback(action, graveState)
+    def notifyOfAction(self, action, discardedState):
+        self.notifyCallback(action, discardedState)
 
     def priestKnowledge(self, player, card):
         self.priestCallback(player, card)

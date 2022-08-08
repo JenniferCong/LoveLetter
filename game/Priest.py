@@ -1,14 +1,9 @@
-"""
-Created on Jan 24, 2022
-
-@author: Jennifer Chun
-"""
-
+# take https://github.com/matthewjwolff/LoveLetter as the reference
 from .Card import Card
 
 
 class Priest(Card):
-    role = "Priest"
+    role = "Priest 🙏"
     value = 2
 
     def perform(self, action, players, game, deck):

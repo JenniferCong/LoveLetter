@@ -1,14 +1,9 @@
-"""
-Created on Jan 24, 2022
-
-@author: Jennifer Chun
-"""
-
+# take https://github.com/matthewjwolff/LoveLetter as the reference
 from .Card import Card
 
 
 class Countess(Card):
-    role = "Countess"
+    role = "Countess 👠"
     value = 8
 
     def perform(self, action, players, game, deck):

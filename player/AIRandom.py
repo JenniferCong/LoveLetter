@@ -1,10 +1,6 @@
-'''
-Created on Nov 27, 2016
-
-@author: mjw
-'''
 import random
 from game.Action import Action
+from game.Guard import Guard
 from game.Handmaid import Handmaid
 from game.Countess import Countess
 from game.King import King
@@ -15,11 +11,6 @@ from player.AI import AI
 
 
 class AIRandom(AI):
-    '''
-    An AI for engine testing that makes a random choice for all actions.
-
-    Alternately, it is an AI that always takes a random choice.
-    '''
 
     numBots = 0
 
@@ -27,21 +18,20 @@ class AIRandom(AI):
         self.number = AIRandom.numBots
         AIRandom.numBots += 1
 
-    def getAction(self, dealtCard, deckSize, graveState, players, chancellorCards):
-        # ok it's not totally random, but let's not have the bot be a total fool
-        # and just play the handmaid on someone else
+    def getAction(self, dealtCard, deckSize, discardedState, players, chancellorCards):
         choice = random.choice((self.hand, dealtCard))
         target = self
+        if len(players) == 1 and players[0] == target:
+            if isinstance(choice, Guard):
+                classIndex = random.randrange(1, len(game.util.cardTypes))
+                return Action(self, choice, target, game.util.cardTypes[classIndex], None, None)
+            else:
+                return Action(self, choice, target, None, None, None)
 
-        # If we have to play the countess
         if isinstance(self.hand, Countess) and (isinstance(dealtCard, King) or isinstance(dealtCard, Prince)):
             return Action(self, self.hand, self, None, None, None)
         elif isinstance(dealtCard, Countess) and (isinstance(self.hand, King) or isinstance(self.hand, Prince)):
             return Action(self, dealtCard, self, None, None, None)
-
-        if not isinstance(choice, Handmaid):
-            while target is self:
-                target = random.choice(players)
 
         if isinstance(self.hand, Chancellor):
             chancellorReturn = [self.hand, chancellorCards[0], chancellorCards[1]]
@@ -50,10 +40,14 @@ class AIRandom(AI):
             returnChoice2 = random.choice(chancellorReturn)
             return Action(self, self.hand, self, None, returnChoice1, returnChoice2)
 
+        if not isinstance(choice, Handmaid):
+            while target is self:
+                target = random.choice(players)
+
         classIndex = random.randrange(1, len(game.util.cardTypes))
         return Action(self, choice, target, game.util.cardTypes[classIndex], None, None)
 
-    def notifyOfAction(self, action, graveState):
+    def notifyOfAction(self, action, discardedState):
         pass
 
     def priestKnowledge(self, player, card):

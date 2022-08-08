@@ -1,11 +1,5 @@
-"""
-Created on Jan 25, 2022
-
-@author: Jennifer Chun
-"""
 import random
-
-# from .Spy import Spy
+from .Spy import Spy
 from .Guard import Guard
 from .Priest import Priest
 from .Baron import Baron
@@ -18,8 +12,8 @@ from .Princess import Princess
 
 
 class Deck(object):
-    initial_deck = [
-        # Spy, Spy,
+    initialDeck = [
+        Spy, Spy,
         Guard, Guard, Guard, Guard, Guard, Guard,
         Priest, Priest,
         Baron, Baron,
@@ -31,24 +25,24 @@ class Deck(object):
         Princess]
 
     def __init__(self):
-        # self.shuffled_deck = Deck.initial_deck
-        # random.shuffle(self.shuffled_deck)
-        self.shuffled_deck = []
-        for clazz in Deck.initial_deck:
-            self.shuffled_deck.append(clazz())
+        # self.shuffledDeck = Deck.initialDeck
+        # random.shuffle(self.shuffledDeck)
+        self.shuffledDeck = []
+        for clazz in Deck.initialDeck:
+            self.shuffledDeck.append(clazz())
         # now shuffle
-        random.shuffle(self.shuffled_deck)
+        random.shuffle(self.shuffledDeck)
 
     def size(self):
-        return len(self.shuffled_deck)
+        return len(self.shuffledDeck)
 
-    def get_card(self):
-        if len(self.shuffled_deck) == 0:
+    def getCard(self):
+        if len(self.shuffledDeck) == 0:
             return None
         else:
-            top = self.shuffled_deck[0]
-            self.shuffled_deck = self.shuffled_deck[1:]
+            top = self.shuffledDeck[0]
+            self.shuffledDeck = self.shuffledDeck[1:]
             return top
 
-    def put_card(self, card):
-        self.shuffled_deck.append(card)
+    def putCard(self, card):
+        self.shuffledDeck.append(card)

@@ -1,15 +1,10 @@
-"""
-Created on Jan 24, 2022
-
-@author: Jennifer Chun
-"""
-
+# take https://github.com/matthewjwolff/LoveLetter as the reference
 from .Card import Card
 
 
 class Prince(Card):
-    role = "Prince"
+    role = "Prince ♔"
     value = 5
 
     def perform(self, action, players, game, deck):
-        game.abnormalDiscard(action.target, action.target.hand)
+        game.princeAction(action.target, action.target.hand)
